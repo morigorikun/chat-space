@@ -51,11 +51,10 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true, unll: false, unique: true|
-|member_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :messages
-- belongs_tp :user
+- has_many :users, through: :members
 - has_many : groups_users
 
 ## messageテーブル
