@@ -38,7 +38,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|string|index: true, unll: false, unique: true|
+|name|string|index: true, unll: false, unique: true|
 |mail|string|null: false|
 
 ### Association
