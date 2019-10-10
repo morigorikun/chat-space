@@ -1,0 +1,16 @@
+.chat-side
+  .side-header
+    .side-header__box
+      .side-header__box__user-name
+        = current_user.name
+      .side-header__box__menu
+        =link_to "#", class: "side-header__box__menu__new-group" do
+          = fa_icon 'edit', class: "side-header__box__btn--icon"
+        =link_to "#", class: "side-header__box__menu__edit-user" do
+          = fa_icon 'cog', class: "side-header__box__btn--icon"
+  .groups
+    =link_to "#", class: "group" do
+      .group__group-name
+        user_name
+      .group__latest-message
+        message
