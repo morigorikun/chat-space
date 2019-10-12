@@ -26,35 +26,10 @@
             name
       .main-header__edit-btn
         =link_to "Edit","#"
-    .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
 
     .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
-
-    .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
+      = render @messages
+      -# = render partial: 'message', collection: @messages
 
     -# %form#new_message.new_message{ accept: {charset: "UTF-8"}, action: "/groups/2146/messages", enctype: "multipart/form-data", method: "post"}
     -#   %input{ name: "utf8", type: "hidden", value: "✓"}/
