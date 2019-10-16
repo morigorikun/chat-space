@@ -1,4 +1,4 @@
-.wrapper.clearfix
+.wrapper
   .chat-side
     .side-header
       .side-header__box
@@ -26,43 +26,26 @@
             name
       .main-header__edit-btn
         =link_to "Edit","#"
-    .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
 
     .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
+      = render @messages
+      -# = render partial: 'message', collection: @messages
 
-    .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            メンバーネーム
-          .message__upper-info__date
-            日にち、曜日、時間
-        .message__text
-          メッセージ
-
-    %form#new_message.new_message{ accept: {charset: "UTF-8"}, action: "/groups/2146/messages", enctype: "multipart/form-data", method: "post"}
-      %input{ name: "utf8", type: "hidden", value: "✓"}/
-      %input{ name: "authenticity_token", type: "hidden", value: ""}/
-      .input-box
-        %input#message_content.input-box__text{ name: "message[content]", placeholder: "type a message", type: "text"}/
-        %label.input-box__image{ for: "message_image"}
-          = fa_icon 'image'
-          -# %i.fa.fa-image
-          %input#message_image.input-box__image__file{ name: "message[image]", type: "file" }/
-        %input.submit-btn{ data: {disable: { with: Send }, name: "commit", type: "submit", value: "Send"}/
+    -# %form#new_message.new_message{ accept: {charset: "UTF-8"}, action: "/groups/2146/messages", enctype: "multipart/form-data", method: "post"}
+    -#   %input{ name: "utf8", type: "hidden", value: "✓"}/
+    -#   %input{ name: "authenticity_token", type: "hidden", value: ""}/
+    -#   .input-box
+    -#     %input#message_content.input-box__text{ name: "message[content]", placeholder: "type a message", type: "text"}/
+    -#     %label.input-box__image{ for: "message_image"}
+    -#       = fa_icon 'image'
+    -#       -# %i.fa.fa-image
+    -#       %input#message_image.input-box__image__file{ name: "message[image]", type: "file" }/
+    -#     %input.submit-btn{ "data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        .input-box
+          = f.label :image, class: 'input-box__image' do
+            = fa_icon 'image', class: 'icon'
+            = f.file_field :image, class: 'input-box__image__file'
+        = f.submit 'Send', class: 'submit-btn'
