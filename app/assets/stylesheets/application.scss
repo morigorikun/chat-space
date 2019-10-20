@@ -96,6 +96,7 @@
 }
 .messages {
   margin: 100px 40px 0;
+  overflow: auto;
 }
 .message {
   &__upper-info {
