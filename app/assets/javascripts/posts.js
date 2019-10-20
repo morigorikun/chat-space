@@ -26,7 +26,6 @@ $(function(){
     .done(function(message){
       var html = buildPost(message);
       $('.messages').append(html)
-      $('#message_content').val('')
       $('form')[0].reset();
       $(".submit-btn").removeAttr("disabled")
       $('html').animate({ scrollTop: $('html')[0].scrollHeight});
