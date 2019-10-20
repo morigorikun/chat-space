@@ -1,46 +1,9 @@
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__box
-        .side-header__box__user-name
-          user_name
-        .side-header__box__menu
-          =link_to "#", class: "side-header__box__menu__new-group" do
-            = fa_icon 'edit', class: "side-header__box__btn--icon"
-          =link_to "#", class: "side-header__box__menu__edit-user" do
-            = fa_icon 'cog', class: "side-header__box__btn--icon"
-    .groups
-      =link_to "#", class: "group" do
-        .group__group-name
-          user_name
-        .group__latest-message
-          message
+  = render 'devise/shared/side_bar'
   .chat-main
-    .main-header
-      .main-header__left-box
-        .main-header__left-box__current-group
-          group-name
-        .main-header__left-box__member-list
-          Menber :
-          .main-header__left-box__member-list__mamber
-            name
-      .main-header__edit-btn
-        =link_to "Edit","#"
-
+    = render 'devise/shared/main_header'
     .messages
       = render @messages
-      -# = render partial: 'message', collection: @messages
-
-    -# %form#new_message.new_message{ accept: {charset: "UTF-8"}, action: "/groups/2146/messages", enctype: "multipart/form-data", method: "post"}
-    -#   %input{ name: "utf8", type: "hidden", value: "✓"}/
-    -#   %input{ name: "authenticity_token", type: "hidden", value: ""}/
-    -#   .input-box
-    -#     %input#message_content.input-box__text{ name: "message[content]", placeholder: "type a message", type: "text"}/
-    -#     %label.input-box__image{ for: "message_image"}
-    -#       = fa_icon 'image'
-    -#       -# %i.fa.fa-image
-    -#       %input#message_image.input-box__image__file{ name: "message[image]", type: "file" }/
-    -#     %input.submit-btn{ "data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
