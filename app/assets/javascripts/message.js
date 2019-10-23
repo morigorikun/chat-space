@@ -1,6 +1,7 @@
 $(function(){
 
   var search_list = $("#user-search-result");
+  var member_list = $("#member_search_result");
   
 function appendUser(user)  {
   var html = `<div class="chat-group-user clearfix">
@@ -12,14 +13,25 @@ function appendUser(user)  {
 
 function appendNoUser(user){
   var html = `<div class='chat-group-user clearfix'>
-                <p class="chat-group-user__name">${user}が見つかりません</p>
+                <p class="chat-group-user__name">${ user }</p>
               </div>`
   search_list.append(html);
 }
 
+function appendMembers(userName,userId) {
+  var html =`
+            <div class='chat-group-user'>
+              <input name='group[user_ids][]' type='hidden' value='${userId}'>
+              <p class='chat-group-user__name'>${userName}</p>
+              <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+            </div>
+            `
+  member_list.append(html)
+}
+
   $(".chat-group-form__input").on("keyup", function(){
     var input = $(this).val();    //フォームの値を取得して変数に代入する
-
+    console.log(input)
   
     $.ajax({
       type: 'GET',
@@ -28,7 +40,6 @@ function appendNoUser(user){
       data: { keyword: input },
     })
     .done(function(users) {
-      console.log(users)
       $("#user-search-result").empty();
       if (users.length !== 0) {
         users.forEach(function(user){
@@ -40,7 +51,18 @@ function appendNoUser(user){
       }
     })
     .fail(function() {
-      alert('エラー');
+      alert('ユーザー検索に失敗しました');
+    });
+
+    $(document).on('click','.user-search-add', function(){
+      var name = $(this).data("user-name");
+      var user_id = $(this).data("user-id");
+      $(this).parent().remove();
+      appendMembers(name, user_id);
+    });
+
+    $(document).on("click", '.user-search-remove', function() {
+      $(this).parent().remove();
     });
   });
 });
