@@ -1,11 +1,10 @@
 .main-header
-  - current_user.groups.each do |group|
-    .main-header__left-box
-      .main-header__left-box__current-group
-        = group.name
-      .main-header__left-box__member-list
-        Menber :
-        .main-header__left-box__member-list__mamber
-          = @group.users
-    .main-header__edit-btn
-      =link_to "Edit","#"
+  .main-header__left-box
+    .main-header__left-box__current-group
+      = @group.name
+    .main-header__left-box__member-list
+      - @group.users.each do |user|
+        = user.name
+      .main-header__left-boxs__member-list__mamber
+  .main-header__edit-btn
+    =link_to "Edit", edit_group_path(@group.id)
