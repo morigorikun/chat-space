@@ -5,22 +5,25 @@
 @import "modules/flash";
 @import "modules/group";
 
-.wrapper {
-  overflow: hidden;
-}
 .chat-side {
-  position: fixed;
-  background: #2f3e51;
+  // position: fixed;
   width: 300px;
   height: 100vh;
   box-sizing: border-box;
   float: left;
+  // overflow: scroll;
   .side-header {
-    background: #253141;
-    padding: 0 20px;
+    // z-index: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: calc(100% - 300px);
+    // padding: 0 20px;
     &__box {
-      overflow: hidden;
+      // overflow: hidden;
       // padding: 40px 0;
+      padding: 0 20px;
+      background: #2f3e51;
       height: 100px;
       line-height: 100px;
       &__user-name {
@@ -40,6 +43,10 @@
 }
 .groups {
   padding: 20px;
+  overflow: scroll;
+  height: 650px;
+  background: #253141;
+  // margin-top: 100px;
   .group__group-name {
     color: #FFF;
   }
@@ -54,10 +61,10 @@
   width: calc(100% - 300px);
   .main-header {
     background: #fff;
-    position: fixed;
-    top: 0;
-    left:300px;
-    right: 0;
+    // position: fixed;
+    // top: 0;
+    // left:300px;
+    // right: 0;
     height: 100px;
     display: flex;
     padding: 0 40px;
@@ -95,8 +102,9 @@
   }
 }
 .messages {
-  margin: 100px 40px 0;
+  margin: 0 40px;
   overflow: auto;
+  height: 75vh;
 }
 .message {
   &__upper-info {
@@ -137,6 +145,7 @@
     width: calc(100% - 155px);
     margin-left: 40px;
     margin-top: 20px;
+    padding-right: 50px;
     // flex: 1;
   }
   &__image {
