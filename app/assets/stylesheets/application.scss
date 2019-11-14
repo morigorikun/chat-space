@@ -104,11 +104,12 @@
 .messages {
   margin: 0 40px;
   overflow: auto;
-  height: 75vh;
+  height: 85vh;
 }
 .message {
+  padding-bottom: 40px;
   &__upper-info {
-    margin: 46px 0 10px 0;
+    margin: 10px 0 10px 0;
     display: flex;
     &__talker {
       font-size: 16px;
